@@ -30,7 +30,8 @@ class Term extends Model
      */
     public function country()
     {
-        return $this->belongsTo('App\Country');
+        // Belongs usually is for direct ids within the table
+        return $this->belongsTo(Country::class);
     }
 
     /**
@@ -38,7 +39,8 @@ class Term extends Model
      */
     public function blogs()
     {
-        return $this->belongsToMany('App\Blog');
+        // BelongsToMany is usually for pivot tables
+        return $this->belongsToMany(Blog::class);
     }
 
     /**
