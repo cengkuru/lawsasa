@@ -13,6 +13,26 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', function ($api) {
+
+
+    // Countries
+    $api->group(['prefix' => 'countries'], function ($api) {
+        $api->get('/', 'App\Http\Controllers\CountriesController@index');
+        $api->get('/{id}', 'App\Http\Controllers\CountriesController@show');
+        $api->post('/', 'App\Http\Controllers\CountriesController@store');
+        $api->put('/{id}', 'App\Http\Controllers\CountriesController@update');
+        $api->delete('/{id}', 'App\Http\Controllers\CountriesController@destroy');
+
+    });
+
+    // Terms
+
+
 });

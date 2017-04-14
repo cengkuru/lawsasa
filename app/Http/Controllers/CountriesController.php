@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Country;
+use Dingo\Api\Routing\Helpers;
+use App\Transformers\CountryTransformer;
 
 class CountriesController extends Controller
 {
+    use Helpers;
     /**
      * Display a listing of the resource.
      *
@@ -13,18 +18,12 @@ class CountriesController extends Controller
      */
     public function index()
     {
-        //
+        $countries = Country::all();
+
+        return $this->collection($countries, new CountryTransformer);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -32,9 +31,14 @@ class CountriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\StoreCountryRequest $request)
     {
-        //
+
+        if (Country::create($request->all())) {
+            return $this->response->created(); // 201 response
+        }
+
+        return $this->response->errorBadRequest();
     }
 
     /**
@@ -45,19 +49,20 @@ class CountriesController extends Controller
      */
     public function show($id)
     {
-        //
+        //$country = Country::where('id',$id)->get();
+        //$country = Country::whereId($id)->get();
+        //$country = Country::findOrFail($id);
+        $country = Country::where('id',$id)->first();
+
+
+        if ($country) {
+            return $this->item($country, new CountryTransformer);
+        }
+
+        return $this->response->errorNotFound();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -66,9 +71,16 @@ class CountriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Requests\StoreCountryRequest $request)
     {
-        //
+        $country = Country::findOrFail($id);
+
+        $country->update($request->all());
+        if ($country) {
+            return $this->response->noContent();
+        }
+
+        return $this->response->errorBadRequest();
     }
 
     /**
@@ -79,6 +91,14 @@ class CountriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $country = Country::findOrFail($id);
+
+        if ($country) {
+
+            $country->delete();
+            return $this->response->noContent();
+        }
+
+        return $this->response->errorBadRequest();
     }
 }
