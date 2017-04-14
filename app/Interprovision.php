@@ -6,29 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer $id
- * @property integer $country_id
- * @property string $constitution
- * @property integer $articles
- * @property string $provision
- * @property string $link
+ * @property integer $interarticle_id
+ * @property string $title
+ * @property string $description
  * @property string $created_at
  * @property string $updated_at
- * @property Country $country
+ * @property Interarticle $interarticle
  * @property Term[] $terms
  */
-class Constitutional extends Model
+class Interprovision extends Model
 {
     /**
      * @var array
      */
-    protected $fillable = ['country_id', 'constitution', 'articles', 'provision', 'link', 'created_at', 'updated_at'];
+    protected $fillable = ['interarticle_id', 'title', 'description', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function country()
+    public function interarticle()
     {
-        return $this->belongsTo('App\Country');
+        return $this->belongsTo('App\Interarticle');
     }
 
     /**
