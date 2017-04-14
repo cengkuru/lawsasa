@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Caselaw[] $caselaws
  * @property Constitutional[] $constitutionals
  * @property Interprovision[] $interprovisions
+ * @property Lawarea[] $lawareas
  */
 class Term extends Model
 {
@@ -30,8 +31,7 @@ class Term extends Model
      */
     public function country()
     {
-        // Belongs usually is for direct ids within the table
-        return $this->belongsTo(Country::class);
+        return $this->belongsTo('App\Country');
     }
 
     /**
@@ -39,8 +39,7 @@ class Term extends Model
      */
     public function blogs()
     {
-        // BelongsToMany is usually for pivot tables
-        return $this->belongsToMany(Blog::class);
+        return $this->belongsToMany('App\Blog');
     }
 
     /**
@@ -73,5 +72,13 @@ class Term extends Model
     public function interprovisions()
     {
         return $this->belongsToMany('App\Interprovision');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function lawareas()
+    {
+        return $this->belongsToMany('App\Lawarea');
     }
 }

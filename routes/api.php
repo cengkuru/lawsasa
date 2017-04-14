@@ -33,6 +33,14 @@ $api->version('v1', function ($api) {
     });
 
     // Terms
+    $api->group(['prefix' => 'terms'], function ($api) {
+        $api->get('/', 'App\Http\Controllers\TermsController@index');
+        $api->get('/{id}', 'App\Http\Controllers\TermsController@show');
+        $api->post('/', 'App\Http\Controllers\TermsController@store');
+        $api->put('/{id}', 'App\Http\Controllers\TermsController@update');
+        $api->delete('/{id}', 'App\Http\Controllers\TermsController@destroy');
+
+    });
 
 
 });

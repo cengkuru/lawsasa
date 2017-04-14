@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Lawarea;
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Term;
+use Dingo\Api\Routing\Helpers;
+use App\Transformers\TermTransformer;
 
 class TermsController extends Controller
 {
+    use Helpers;
     /**
      * Display a listing of the resource.
      *
@@ -13,18 +19,12 @@ class TermsController extends Controller
      */
     public function index()
     {
-        //
+        $terms = Term::all();
+
+        return $this->collection($terms, new TermTransformer);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -32,9 +32,20 @@ class TermsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\StoreTermRequest $request)
     {
-        //
+        $term = Term::create($request->all());
+
+        if ($term) {
+            // If there is a law areas
+            if($request->input('lawarea_id')){
+                $term->lawareas()->attach($request->input('lawarea_id'));
+
+            }
+            return $this->response->created(); // 201 response
+        }
+
+        return $this->response->errorBadRequest();
     }
 
     /**
@@ -45,19 +56,21 @@ class TermsController extends Controller
      */
     public function show($id)
     {
-        //
+        //$term = Term::where('id',$id)->get();
+        //$term = Term::whereId($id)->get();
+        //$term = Term::findOrFail($id);
+        $term = Term::where('id',$id)->first();
+
+
+        if ($term) {
+
+            return $this->item($term, new TermTransformer);
+        }
+
+        return $this->response->errorNotFound();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -66,9 +79,24 @@ class TermsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Requests\StoreTermRequest $request)
     {
-        //
+        $term = Term::findOrFail($id);
+
+        $term->update($request->all());
+        if ($term) {
+            // Delete previous lawareas
+            $term->lawareas()->detach();
+
+            // If there is a law areas
+            if($request->input('lawarea_id')){
+                $term->lawareas()->attach($request->input('lawarea_id'));
+
+            }
+            return $this->response->noContent();
+        }
+
+        return $this->response->errorBadRequest();
     }
 
     /**
@@ -79,6 +107,14 @@ class TermsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $term = Term::findOrFail($id);
+
+        if ($term) {
+
+            $term->delete();
+            return $this->response->noContent();
+        }
+
+        return $this->response->errorBadRequest();
     }
 }
