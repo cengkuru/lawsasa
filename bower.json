@@ -1,0 +1,23 @@
+{
+  "name": "lawsasa",
+  "description": "",
+  "main": "",
+  "authors": [
+    "cengkuru <mcengkuru@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/cengkuru/lawsasa",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.6.4",
+    "angular-material": "master",
+    "angular-ui-router": "^0.3.2"
+  }
+}

@@ -7,14 +7,28 @@ use App\Term;
 
 class TermTransformer extends TransformerAbstract
 {
+    protected $defaultIncludes = [
+        'country',
+        'lawareas'
+    ];
     public function transform(Term $term)
     {
         return [
             'id'            => (int) $term->id,
             'name'          => ucfirst($term->title),
-            'description'          => $term->description,
-            'country'=>$term->country,
-            'lawarea'=>$term->lawareas
+            'description'          => $term->description
         ];
+    }
+
+    // Transform country
+    public function includeCountry(Term $term){
+        $country = $term->country;
+        return $this->item($country,new CountryTransformer());
+    }
+
+    // Transform lawarea
+    public function includeLawareas(Term $term){
+        $lawareas = $term->lawareas;
+        return $this->collection($lawareas,new LawareaTransformer());
     }
 }

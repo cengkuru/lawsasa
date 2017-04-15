@@ -10,8 +10,7 @@ class CountryTransformer extends TransformerAbstract
     public function transform(Country $country)
     {
         return [
-            'id'            => (int) $country->id,
-            'name'          => ucfirst($country->title)
+            'name'          => $country->title
         ];
     }
 }

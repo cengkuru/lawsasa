@@ -1,0 +1,10 @@
+body {
+    background: #fff;
+}
+.white-bg {
+    background: #fff !important;
+}
+
+.black {
+    color: #000000 !important;
+}
