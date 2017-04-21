@@ -333,6 +333,7 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
     );
 
     public static $classMap = array (
+        'AddCountryIdToTermsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_094414_add_country_id_to_terms_table.php',
         'AddLinksToStatutesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_123130_add_links_to_statutes_table.php',
         'CreateBlogTermPivotTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_132008_create_blog_term_pivot_table.php',
         'CreateBlogsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_131951_create_blogs_table.php',
@@ -806,6 +807,7 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'RemoveCountryIdFromTermsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_093734_remove_country_id_from_terms_table.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',

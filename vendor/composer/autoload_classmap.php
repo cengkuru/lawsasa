@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddCountryIdToTermsTable' => $baseDir . '/database/migrations/2017_04_21_094414_add_country_id_to_terms_table.php',
     'AddLinksToStatutesTable' => $baseDir . '/database/migrations/2017_04_14_123130_add_links_to_statutes_table.php',
     'CreateBlogTermPivotTable' => $baseDir . '/database/migrations/2017_04_14_132008_create_blog_term_pivot_table.php',
     'CreateBlogsTable' => $baseDir . '/database/migrations/2017_04_14_131951_create_blogs_table.php',
@@ -479,6 +480,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'RemoveCountryIdFromTermsTable' => $baseDir . '/database/migrations/2017_04_21_093734_remove_country_id_from_terms_table.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',
     'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
     'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => $vendorDir . '/phpunit/php-code-coverage/src/Driver/Driver.php',

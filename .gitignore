@@ -7,3 +7,6 @@
 Homestead.json
 Homestead.yaml
 
+/vendor/
+/public/components/
+/.env
