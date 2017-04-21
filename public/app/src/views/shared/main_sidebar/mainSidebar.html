@@ -1,0 +1,21 @@
+<md-sidenav
+        md-disable-backdrop
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="openInfo"
+        >
+
+    <md-toolbar class="md-theme-indigo md-tall">
+        <h3 class="md-toolbar-tools">GPP Dashboard</h3>
+    </md-toolbar>
+    <md-content layout-padding >
+        <md-list>
+            <md-list-item ng-repeat="item in menu">
+                <a ui-sref="{{::item.link}}" ui-sref-active="active">
+                    {{::item.title}}
+                </a>
+            </md-list-item>
+        </md-list>
+    </md-content>
+
+</md-sidenav>

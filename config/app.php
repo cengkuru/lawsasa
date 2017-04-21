@@ -179,7 +179,8 @@ return [
 
         // Third party libs
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
-        Dingo\Api\Provider\LaravelServiceProvider::class
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
     ],
 

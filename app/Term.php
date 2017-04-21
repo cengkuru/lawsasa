@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 /**
  * @property integer $id
@@ -21,9 +22,33 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Term extends Model
 {
+
     /**
      * @var array
      */
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'terms.title' => 10,
+            'definitions.definition' => 10,
+            'countries.title' => 2
+        ],
+        'joins' => [
+            'countries' => ['countries.id','terms.country_id'],
+            'definitions' => ['terms.id','definitions.term_id'],
+        ],
+    ];
     protected $fillable = ['country_id', 'title', 'description', 'created_at', 'updated_at'];
 
     /**
@@ -80,5 +105,9 @@ class Term extends Model
     public function lawareas()
     {
         return $this->belongsToMany('App\Lawarea');
+    }
+
+    public function definitions(){
+        return $this->hasMany(Definition::class);
     }
 }

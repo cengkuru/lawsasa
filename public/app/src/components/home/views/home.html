@@ -1,0 +1,24 @@
+<div  layout="row" flex layout-margin layout-padding    layout-align="center center" class="white-bg">
+    <div flex-lg="50" flex-sm="100" flex-xs="100">
+        <div layout="row" layout-align="center center">
+            <h1> <ng-md-icon icon="search"></ng-md-icon> Lawsasa</h1>
+        </div>
+
+        <form name="termForm"  flex>
+            <md-input-container class="md-block" flex-gt-sm>
+
+                <input required placeholder="Enter search term ..." ng-model="term.text" type="text">
+            </md-input-container>
+
+            <div layout="row" layout-align="center center">
+                <div flex="20">
+                    <md-button ng-click="doSearch(term.text)" ng-disabled="termForm.$invalid" type="submit"   class="md-raised md-primary">Search</md-button>
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+

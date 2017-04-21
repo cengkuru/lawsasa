@@ -1,0 +1,21 @@
+<div  layout="column" layout-fill>
+
+    <section layout="row" flex>
+        <div ng-if="hasSidebar" ng-include="'app/src/views/shared/main_sidebar/mainSidebar.html'"></div>
+        <md-content class="white-bg" flex >
+            <div ng-if="hasHeader" ng-include="'app/src/views/shared/header/mainHeader.html'"></div>
+
+            <main>
+                <ui-view layout="column"></ui-view>
+            </main>
+
+
+        </md-content>
+
+
+
+    </section>
+
+    <div  ng-include="'app/src/views/shared/footer/footer.html'"></div>
+
+</div>

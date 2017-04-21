@@ -10,12 +10,16 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '3919eeb97e98d4648304477f8ef734ba' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/Crypt/Random.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f4e9c7747917193061b46ee142399603' => __DIR__ . '/..' . '/dingo/api/src/helpers.php',
+        '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -30,9 +34,15 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
+            'Watson\\Rememberable\\' => 20,
+        ),
+        'U' => 
+        array (
+            'Unisharp\\Laravelfilemanager\\' => 28,
         ),
         'T' => 
         array (
+            'Tymon\\JWTAuth\\' => 14,
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
             'Tests\\' => 6,
         ),
@@ -51,6 +61,7 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Symfony\\Component\\ClassLoader\\' => 30,
         ),
         'R' => 
         array (
@@ -60,7 +71,12 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         array (
             'Psy\\' => 4,
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
             'PhpParser\\' => 10,
+        ),
+        'N' => 
+        array (
+            'Nicolaslopezj\\Searchable\\' => 25,
         ),
         'M' => 
         array (
@@ -71,6 +87,7 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
             'League\\Fractal\\' => 15,
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
+            'Laravel\\Scout\\' => 14,
             'Laracasts\\Generators\\' => 21,
         ),
         'K' => 
@@ -80,7 +97,12 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         ),
         'I' => 
         array (
+            'Intervention\\Image\\' => 19,
             'Illuminate\\' => 11,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
         ),
         'F' => 
         array (
@@ -96,11 +118,19 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
             'Dingo\\Blueprint\\' => 16,
             'Dingo\\Api\\' => 10,
             'DeepCopy\\' => 9,
+            'DebugBar\\' => 9,
         ),
         'C' => 
         array (
             'Cron\\' => 5,
+            'Collective\\Html\\' => 16,
             'Carbon\\' => 7,
+        ),
+        'B' => 
+        array (
+            'Barryvdh\\LaravelIdeHelper\\' => 26,
+            'Barryvdh\\Debugbar\\' => 18,
+            'Barryvdh\\Cors\\' => 14,
         ),
         'A' => 
         array (
@@ -122,6 +152,18 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Watson\\Rememberable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/watson/rememberable/src',
+        ),
+        'Unisharp\\Laravelfilemanager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src',
+        ),
+        'Tymon\\JWTAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tymon/jwt-auth/src',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -183,6 +225,10 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Symfony\\Component\\ClassLoader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/class-loader',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -195,9 +241,17 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'Nicolaslopezj\\Searchable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nicolaslopezj/searchable/src',
         ),
         'Monolog\\' => 
         array (
@@ -215,6 +269,10 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Laravel\\Scout\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/scout/src',
+        ),
         'Laracasts\\Generators\\' => 
         array (
             0 => __DIR__ . '/..' . '/laracasts/generators/src',
@@ -227,9 +285,17 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         array (
             0 => __DIR__ . '/..' . '/krlove/code-generator/src',
         ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
+        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
         'Faker\\' => 
         array (
@@ -267,13 +333,33 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'DebugBar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar',
+        ),
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
+        'Collective\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelcollective/html/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'Barryvdh\\LaravelIdeHelper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src',
+        ),
+        'Barryvdh\\Debugbar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src',
+        ),
+        'Barryvdh\\Cors\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-cors/src',
         ),
         'App\\' => 
         array (
@@ -282,6 +368,13 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
     );
 
     public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'System' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
+            ),
+        ),
         'P' => 
         array (
             'Prophecy\\' => 
@@ -293,11 +386,26 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
                 0 => __DIR__ . '/..' . '/erusev/parsedown',
             ),
         ),
+        'N' => 
+        array (
+            'Net' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
+            ),
+            'Namshi\\JOSE' => 
+            array (
+                0 => __DIR__ . '/..' . '/namshi/jose/src',
+            ),
+        ),
         'M' => 
         array (
             'Mockery' => 
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
+            ),
+            'Math' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
             ),
         ),
         'J' => 
@@ -309,6 +417,13 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
             'JakubOnderka\\PhpConsoleColor' => 
             array (
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
+            ),
+        ),
+        'F' => 
+        array (
+            'File' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
             ),
         ),
         'D' => 
@@ -330,6 +445,20 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
                 0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
         ),
+        'C' => 
+        array (
+            'Crypt' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
+            ),
+        ),
+        'B' => 
+        array (
+            'Barryvdh' => 
+            array (
+                0 => __DIR__ . '/..' . '/barryvdh/reflection-docblock/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -344,9 +473,11 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         'CreateConstitutionalTermPivotTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_130226_create_constitutional_term_pivot_table.php',
         'CreateConstitutionalsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_130005_create_constitutionals_table.php',
         'CreateCountriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_121141_create_countries_table.php',
+        'CreateDefinitionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_140055_create_definitions_table.php',
         'CreateInterarticlesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_123441_create_interarticles_table.php',
         'CreateInterprovisionTermPivotTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_124624_create_interprovision_term_pivot_table.php',
         'CreateInterprovisionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_123442_create_interprovisions_table.php',
+        'CreateJobsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_130010_create_jobs_table.php',
         'CreateLawareaTermPivotTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_153024_create_lawarea_term_pivot_table.php',
         'CreateLawareasTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_121714_create_lawareas_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
@@ -808,6 +939,7 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'RemoveCountryIdFromTermsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_093734_remove_country_id_from_terms_table.php',
+        'RemoveDescriptionFromTermsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_135920_remove_description_from_terms_table.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',

@@ -21,9 +21,8 @@ class StoreTermRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'title'              => 'required|unique:countries',
-            'description'=>'required',
-            'country_id'=>'required'
+            'title'              => 'required|unique:terms,title',
+            'description'=>'required'
         ];
         //when editing
         if(Request::isMethod('put')){

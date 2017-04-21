@@ -1,0 +1,62 @@
+/*Color variables*/
+body {
+  background: #fff;
+  color: #222;
+  overflow-y: auto;
+  height: auto;
+  min-height: 100%;
+  font: 400 14px/1.42857143 Roboto,sans-serif;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0 !important; }
+
+a {
+  color: #666;
+  text-decoration: none !important; }
+
+a:hover {
+  color: #222;
+  text-decoration: underline; }
+
+.margin-top-none {
+  margin-top: 0; }
+
+.margin-bottom-none {
+  margin-bottom: 0; }
+
+.full-width {
+  width: 100% !important; }
+
+.user_avatar img {
+  width: 64px;
+  height: 64px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%; }
+
+.border-bottom-light {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important; }
+
+.report-list-item {
+  padding: 8px 4px; }
+
+md-sidenav,
+md-sidenav.md-locked-open,
+md-sidenav.md-closed.md-locked-open-add-active {
+  min-width: 200px !important;
+  width: 85vw !important;
+  max-width: 250px !important; }
+
+.white-bg {
+  background: #fff; }
+
+.font-black {
+  color: #222 !important; }
+
+.main-header {
+  color: #222; }
+  .main-header h1, .main-header h2, .main-header h3, .main-header h4, .main-header h5, .main-header h6 {
+    color: #222; }
+
+.footer a {
+  margin: 2px 10px 0 !important; }

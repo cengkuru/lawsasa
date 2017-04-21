@@ -10,3 +10,4 @@ Homestead.yaml
 /vendor/
 /public/components/
 /.env
+/.vscode/

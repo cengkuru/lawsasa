@@ -39,6 +39,7 @@ $api->version('v1', function ($api) {
         $api->post('/', 'App\Http\Controllers\TermsController@store');
         $api->put('/{id}', 'App\Http\Controllers\TermsController@update');
         $api->delete('/{id}', 'App\Http\Controllers\TermsController@destroy');
+        $api->get('/search/{term}', 'App\Http\Controllers\TermsController@searchForTerm');
 
     });
 

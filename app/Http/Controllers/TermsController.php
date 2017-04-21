@@ -37,6 +37,16 @@ class TermsController extends Controller
         $term = Term::create($request->all());
 
         if ($term) {
+            // If there definitions
+            if($request->input('definitions')){
+                foreach ($request->input('definitions') as $key => $value) {
+                    $data = array(
+                        'definition'=>$value
+                    );
+                    $term->definitions()->save($data);
+                }
+            }
+
             // If there is a law areas
             if($request->input('lawarea_id')){
                 $term->lawareas()->attach($request->input('lawarea_id'));
@@ -116,5 +126,11 @@ class TermsController extends Controller
         }
 
         return $this->response->errorBadRequest();
+    }
+
+    public function searchForTerm($term){
+        $terms = Term::where('title', 'LIKE', '%'.$term.'%')->get();
+
+        return $this->collection($terms, new TermTransformer);
     }
 }

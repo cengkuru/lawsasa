@@ -1,0 +1,29 @@
+<div  layout="row" flex layout-margin layout-padding    layout-align="center center" class="login_page">
+    <md-card flex-lg="30" flex-sm="100" flex-xs="100">
+        <div layout="row" flex   layout-align="center center" class="user_avatar">
+            <img ng-src="assets/img/user.png">
+
+        </div>
+        <md-card-content>
+            <form name="userForm">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Email</label>
+                    <input ng-model="user.email" type="email">
+                </md-input-container>
+
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Password</label>
+                    <input type="password" ng-model="user.password">
+                </md-input-container>
+
+                <div layout="row" flex   layout-align="center center">
+                    <md-button flex="80" class="md-raised md-primary">Login</md-button>
+                </div>
+
+
+            </form>
+
+        </md-card-content>
+    </md-card>
+</div>
+
