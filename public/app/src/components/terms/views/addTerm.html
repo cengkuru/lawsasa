@@ -1,0 +1,46 @@
+<md-content layout-padding class="white-bg">
+
+    <form name="termForm">
+        <md-input-container class="md-block">
+            <label>Term</label>
+
+            <input required name="term" ng-model="term.title">
+            <div ng-messages="termForm.text.$error">
+                <div ng-message="required">This is required.</div>
+            </div>
+            <div ng-if="errors.title">
+                <div class="error">{{errors.title[0]}}</div>
+            </div>
+        </md-input-container>
+
+
+        <md-input-container class="md-block" ng-repeat="description in term.descriptions  track by $index">
+            <div layout="row" flex>
+                <div flex>
+                    <label>Description {{$index + 1 }}</label>
+                    <input required md-no-asterisk name="description" ng-model="term.description[$index]">
+                    <div ng-messages="termForm.description.$error">
+                        <div ng-message="required">This is required.</div>
+
+                    </div>
+                </div>
+
+                <md-button ng-click="removeDescription(description)">Remove</md-button>
+            </div>
+        </md-input-container>
+
+
+        <div layout="row" layout-align="end start">
+            <md-button ng-click="addDescription()">Add Description</md-button>
+        </div>
+        <div ng-if="errors.description">
+            <div class="error">{{errors.description[0]}}</div>
+        </div>
+
+
+        <div>
+            <md-button ng-disabled="termForm.$invalid" ng-click="addTerm()" type="submit">Submit</md-button>
+        </div>
+
+    </form>
+</md-content>

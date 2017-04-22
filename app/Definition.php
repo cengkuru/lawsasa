@@ -19,7 +19,7 @@ class Definition extends Model
     protected $fillable = ['definition', 'term_id', 'created_at', 'updated_at'];
 
     public function term(){
-        return $this->belongsTo(Term::class,'term_id');
+        return $this->belongsTo(Term::class);
     }
 
 }

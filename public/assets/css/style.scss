@@ -1,6 +1,8 @@
 /*Color variables*/
 $black: #222;
 $white: #fff;
+$gray:#666;
+$red: #FF0000;
 
 body {
   background: $white;
@@ -14,9 +16,8 @@ body {
   padding:0 !important;
 }
  a {
-   color: #666;
+   color: $gray;
    text-decoration: none !important;
-
  }
  a:hover {
    color: $black;
@@ -61,7 +62,10 @@ md-sidenav.md-closed.md-locked-open-add-active {
 
 }
 .white-bg {
-  background: #fff;
+  background: #fff !important;
+}
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+  background: $white !important;
 }
 .font-black {
   color: $black !important;
@@ -79,4 +83,15 @@ md-sidenav.md-closed.md-locked-open-add-active {
 
     margin: 2px 10px 0 !important;
   }
+}
+.bordered {
+  border: 1px solid #eee!important;
+}
+
+md-sidenav.md-closed.md-locked-open-add-active {
+  width: 220px !important;
+  min-width: 220px !important;
+}
+.error {
+  color:$red;
 }

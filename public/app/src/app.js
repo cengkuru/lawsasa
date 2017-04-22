@@ -16,6 +16,7 @@ angular.module('gpp',
         'dashboardModule',
         'loginModule',
         'usersModule',
+        'termModule',
 
 
         'app.userService',
@@ -113,7 +114,7 @@ angular.module('gpp',
                 url: '/',
                 templateUrl: 'app/src/components/home/views/home.html',
                 hasHeader:true,
-                hasSidebar:true,
+                hasSidebar:false,
                 controller: 'homeCtrl'
             })
             // Dashboard
@@ -135,6 +136,28 @@ angular.module('gpp',
                 hasHeader:false,
                 hasSidebar:false,
                 controller: 'loginCtrl'
+            })
+
+            // Term
+            .state({
+                name: 'main.terms',
+                title: 'Manage Terms',
+                url: '/manage/terms',
+                templateUrl: 'app/src/components/terms/views/manageTerms.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'termsCtrl'
+            })
+
+            // Term
+            .state({
+                name: 'main.newTerm',
+                title: 'New Term',
+                url: '/manage/terms/add-new',
+                templateUrl: 'app/src/components/terms/views/addTerm.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'termsCtrl'
             })
 
 

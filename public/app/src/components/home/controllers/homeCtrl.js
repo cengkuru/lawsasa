@@ -2,7 +2,9 @@
     angular
         .module('homeModule',[])
         .controller('homeCtrl',homeCtrl);
-    function homeCtrl($scope,termService) {
+
+
+    function homeCtrl($scope,termService,$rootScope) {
 
         $scope.doSearch = function (term) {
             termService.searchForTerm(term,function (response) {

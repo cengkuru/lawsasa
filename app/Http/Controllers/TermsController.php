@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Definition;
 use App\Lawarea;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -38,20 +39,16 @@ class TermsController extends Controller
 
         if ($term) {
             // If there definitions
-            if($request->input('definitions')){
-                foreach ($request->input('definitions') as $key => $value) {
+            if($request->input('description')){
+                foreach ($request->input('description') as $key => $value) {
                     $data = array(
+                        'term_id'=>$term->id,
                         'definition'=>$value
                     );
-                    $term->definitions()->save($data);
+                    Definition::create($data);
                 }
             }
 
-            // If there is a law areas
-            if($request->input('lawarea_id')){
-                $term->lawareas()->attach($request->input('lawarea_id'));
-
-            }
             return $this->response->created(); // 201 response
         }
 

@@ -43,7 +43,7 @@ var paths = {
 
 // minify index
 gulp.task('indexpage', function() {
-    var htmlSrc = bases.index + paths.php,
+    var htmlSrc = bases.index + paths.php,// 'resources/views/src/index.php
         htmlDst = bases.index;
 
     gulp.src(htmlSrc)
@@ -56,7 +56,8 @@ gulp.task('indexpage', function() {
 
 // Convert sass to css
 gulp.task('sass', function() {
-    return gulp.src(bases.assets + paths.sass)
+    return gulp
+        .src(bases.assets + paths.sass)
         .pipe(sass().on('error', sass.logError))
         .pipe(size({ gzip: true, showFiles: true }))
         .pipe(gulp.dest(bases.assets + 'css/'))
@@ -133,6 +134,7 @@ gulp.task('scripts', function() {
             bases.app + 'components/login/controllers/loginCtrl.js',
             bases.app + 'components/users/controllers/usersCtrl.js',
             bases.app + 'components/dashboard/controllers/dashboardCtrl.js',
+            bases.app + 'components/terms/controllers/termsCtrl.js',
 
 
             bases.app + 'components/users/services/userService.js',
@@ -183,7 +185,7 @@ gulp.task('watch', function() {
     gulp.watch([bases.bower], ['vendorjs']);
 
     // watch sass for changes
-    gulp.watch([bases.assets + paths.sass], ['sass','styles']);
+    gulp.watch([bases.assets + paths.sass], ['styles','sass']);
 
 
 });

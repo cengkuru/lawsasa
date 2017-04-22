@@ -16,6 +16,7 @@ angular.module('gpp',
         'dashboardModule',
         'loginModule',
         'usersModule',
+        'termModule',
 
 
         'app.userService',
@@ -113,7 +114,7 @@ angular.module('gpp',
                 url: '/',
                 templateUrl: 'app/src/components/home/views/home.html',
                 hasHeader:true,
-                hasSidebar:true,
+                hasSidebar:false,
                 controller: 'homeCtrl'
             })
             // Dashboard
@@ -137,6 +138,28 @@ angular.module('gpp',
                 controller: 'loginCtrl'
             })
 
+            // Term
+            .state({
+                name: 'main.terms',
+                title: 'Manage Terms',
+                url: '/manage/terms',
+                templateUrl: 'app/src/components/terms/views/manageTerms.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'termsCtrl'
+            })
+
+            // Term
+            .state({
+                name: 'main.newTerm',
+                title: 'New Term',
+                url: '/manage/terms/add-new',
+                templateUrl: 'app/src/components/terms/views/addTerm.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'termsCtrl'
+            })
+
 
             // 404
             .state({
@@ -156,6 +179,11 @@ angular.module('gpp',
 
     // mainCtrl.js
     function mainCtrl ($scope,$state, $rootScope, $mdSidenav,$mdComponentRegistry ) {
+        $scope.lockedLeft = true;
+
+        $scope.toggleLeft = function() {
+            $scope.lockedLeft = !$scope.lockedLeft;
+        };
 
 
 
@@ -171,15 +199,7 @@ angular.module('gpp',
         $scope.currentToken='';
         //$scope.refresh();
 
-        // Sidenav toggle
-        $rootScope.toggleSidenav = function(menuId) {
 
-
-            $mdSidenav(menuId).toggle();
-            if(menuId === 'left')
-                $scope.openInfo = !$scope.openInfo;
-
-        };
 
 
 
@@ -191,8 +211,53 @@ angular.module('gpp',
                 icon: 'dashboard'
             },
             {
-                link: 'main.reports',
-                title: 'reports',
+                link: 'main.terms',
+                title: 'Terms',
+                icon: 'person'
+            },
+            {
+                link: 'main.lawareas',
+                title: 'Law Areas',
+                icon: 'person'
+            },
+            {
+                link: 'main.constitutionals',
+                title: 'Constitutionals',
+                icon: 'person'
+            },
+            {
+                link: 'main.interprovisions',
+                title: 'International Provisions',
+                icon: 'person'
+            },
+            {
+                link: 'main.caselaws',
+                title: 'Case Laws',
+                icon: 'person'
+            },
+            {
+                link: 'main.books',
+                title: 'Books',
+                icon: 'person'
+            },
+            {
+                link: 'main.blogs',
+                title: 'Blogs',
+                icon: 'person'
+            },
+            {
+                link: 'main.country',
+                title: 'Countries',
+                icon: 'person'
+            },
+            {
+                link: 'main.Interarticles',
+                title: 'International Articles',
+                icon: 'person'
+            },
+            {
+                link: 'main.statutes',
+                title: 'Statutes',
                 icon: 'person'
             }
         ];
@@ -203,7 +268,9 @@ angular.module('gpp',
     angular
         .module('homeModule',[])
         .controller('homeCtrl',homeCtrl);
-    function homeCtrl($scope,termService) {
+
+
+    function homeCtrl($scope,termService,$rootScope) {
 
         $scope.doSearch = function (term) {
             termService.searchForTerm(term,function (response) {
@@ -236,6 +303,60 @@ angular.module('usersModule',[])
         console.log('we are at dashboard');
     }
 
+})();
+
+(function () {
+    angular
+        .module('termModule',[])
+        .controller('termsCtrl',termCtrl);
+    function termCtrl($scope,termService,$mdToast) {
+        $scope.term = {};
+
+        // Search for terms
+        $scope.doSearch = function (term) {
+            termService.searchForTerm(term,function (response) {
+                console.log(response.data);
+            },function (errors) {
+                console.log(errors);
+            });
+
+
+        };
+
+        $scope.term.descriptions = [];
+        // Add new description
+        $scope.addDescription = function(){
+            $scope.term.descriptions.push({});
+        };
+
+        // Remove description
+        $scope.removeDescription = function(description) {
+            var index = $scope.term.descriptions.indexOf(description);
+            if (index > -1) {
+                $scope.term.descriptions.splice(index, 1);
+            }
+        };
+
+        // Add term
+        $scope.addTerm = function () {
+
+            termService.create($scope.term,function () {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent($scope.term.title +' successfully added')
+                        .position('top right' )
+                        .hideDelay(3000)
+                );
+
+                $scope.term = {};
+
+            },function (errors) {
+                $scope.errors = errors.data.errors;
+            })
+
+        };
+    }
 })();
 
 angular.module('app.userService', [])

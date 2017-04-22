@@ -49,7 +49,7 @@ class Term extends Model
             'definitions' => ['terms.id','definitions.term_id'],
         ],
     ];
-    protected $fillable = ['country_id', 'title', 'description', 'created_at', 'updated_at'];
+    protected $fillable = ['title', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
