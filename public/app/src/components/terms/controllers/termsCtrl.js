@@ -3,7 +3,13 @@
         .module('termModule',[])
         .controller('termsCtrl',termCtrl);
     function termCtrl($scope,termService,$mdToast) {
+        // New term object
         $scope.term = {};
+        // Ner term descriptions object
+        $scope.term.descriptions = [];
+
+        // Get all current terms
+        termService.getAll();
 
         // Search for terms
         $scope.doSearch = function (term) {
@@ -16,7 +22,8 @@
 
         };
 
-        $scope.term.descriptions = [];
+
+
         // Add new description
         $scope.addDescription = function(){
             $scope.term.descriptions.push({});

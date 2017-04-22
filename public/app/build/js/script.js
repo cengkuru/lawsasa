@@ -310,7 +310,13 @@ angular.module('usersModule',[])
         .module('termModule',[])
         .controller('termsCtrl',termCtrl);
     function termCtrl($scope,termService,$mdToast) {
-        $scope.term = {};
+        // New term object
+        $scope.term = gi{};
+        // Ner term descriptions object
+        $scope.term.descriptions = [];
+
+        // Get all current terms
+        termService.getAll();
 
         // Search for terms
         $scope.doSearch = function (term) {
@@ -323,7 +329,8 @@ angular.module('usersModule',[])
 
         };
 
-        $scope.term.descriptions = [];
+
+
         // Add new description
         $scope.addDescription = function(){
             $scope.term.descriptions.push({});

@@ -22,8 +22,11 @@ class TermTransformer extends TransformerAbstract
 
     // Transform country
     public function includeCountry(Term $term){
-        $country = $term->country;
-        return $this->item($country,new CountryTransformer());
+        if($term->country_id){
+            $country = $term->country;
+            return $this->item($country,new CountryTransformer());
+        }
+
     }
 
     // Transform lawarea
