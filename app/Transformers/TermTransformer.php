@@ -2,6 +2,7 @@
 
 namespace App\Transformers;
 
+use Illuminate\Support\Facades\Crypt;
 use League\Fractal\TransformerAbstract;
 use App\Term;
 
@@ -9,14 +10,15 @@ class TermTransformer extends TransformerAbstract
 {
     protected $defaultIncludes = [
         'country',
-        'lawareas'
+        'lawareas',
+        'definitions'
     ];
     public function transform(Term $term)
     {
         return [
             'id'            => (int) $term->id,
-            'name'          => ucfirst($term->title),
-            'description'          => $term->description
+            'secureId'=>Crypt::encrypt($term->id),
+            'title'          => $term->title
         ];
     }
 
@@ -33,5 +35,11 @@ class TermTransformer extends TransformerAbstract
     public function includeLawareas(Term $term){
         $lawareas = $term->lawareas;
         return $this->collection($lawareas,new LawareaTransformer());
+    }
+
+    // Transform Definitions
+    public function includeDefinitions(Term $term){
+        $definitions = $term->definitions;
+        return $this->collection($definitions, new DefinitionsTransformer());
     }
 }

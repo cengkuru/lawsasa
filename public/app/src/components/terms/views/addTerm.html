@@ -1,5 +1,8 @@
 <md-content layout-padding class="white-bg">
 
+
+
+
     <form name="termForm">
         <md-input-container class="md-block">
             <label>Term</label>
@@ -39,7 +42,8 @@
 
 
         <div>
-            <md-button ng-disabled="termForm.$invalid" ng-click="addTerm()" type="submit">Submit</md-button>
+            <md-button ng-disabled="termForm.$invalid" ng-click="submit()" type="submit">Submit</md-button>
+            <md-button  ui-sref="main.terms">Cancel</md-button>
         </div>
 
     </form>

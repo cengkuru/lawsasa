@@ -149,11 +149,22 @@ angular.module('gpp',
                 controller: 'termsCtrl'
             })
 
-            // Term
+            // New Term
             .state({
                 name: 'main.newTerm',
                 title: 'New Term',
                 url: '/manage/terms/add-new',
+                templateUrl: 'app/src/components/terms/views/addTerm.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'termsCtrl'
+            })
+
+            // Edit Term
+            .state({
+                name: 'main.editTerm',
+                title: 'Edit Term',
+                url: '/manage/term/:id/edit',
                 templateUrl: 'app/src/components/terms/views/addTerm.html',
                 hasHeader:true,
                 hasSidebar:true,

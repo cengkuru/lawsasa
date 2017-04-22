@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Term;
 use Dingo\Api\Routing\Helpers;
 use App\Transformers\TermTransformer;
+use Illuminate\Support\Facades\Crypt;
 
 class TermsController extends Controller
 {
@@ -66,7 +67,7 @@ class TermsController extends Controller
         //$term = Term::where('id',$id)->get();
         //$term = Term::whereId($id)->get();
         //$term = Term::findOrFail($id);
-        $term = Term::where('id',$id)->first();
+        $term = Term::where('id',Crypt::decrypt($id))->first();
 
 
         if ($term) {
@@ -88,18 +89,23 @@ class TermsController extends Controller
      */
     public function update($id,Requests\StoreTermRequest $request)
     {
-        $term = Term::findOrFail($id);
+        $term = Term::findOrFail(Crypt::decrypt($id));
 
         $term->update($request->all());
         if ($term) {
-            // Delete previous lawareas
-            $term->lawareas()->detach();
-
-            // If there is a law areas
-            if($request->input('lawarea_id')){
-                $term->lawareas()->attach($request->input('lawarea_id'));
-
+            // If there definitions
+            if($request->input('description')){
+                // Delete all definitions for term
+                Definition::where('term_id',$term->id)->delete();
+                foreach ($request->input('description') as $key => $value) {
+                    $data = array(
+                        'term_id'=>$term->id,
+                        'definition'=>$value
+                    );
+                    Definition::create($data);
+                }
             }
+
             return $this->response->noContent();
         }
 
@@ -114,9 +120,11 @@ class TermsController extends Controller
      */
     public function destroy($id)
     {
-        $term = Term::findOrFail($id);
+        $term = Term::findOrFail(Crypt::decrypt($id));
 
         if ($term) {
+            // Delete all definitions for term
+            Definition::where('term_id',$term->id)->delete();
 
             $term->delete();
             return $this->response->noContent();

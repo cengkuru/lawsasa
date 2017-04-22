@@ -10,4 +10,26 @@
         </md-button>
 
     </md-toolbar>
+
+    <md-content class="white-bg">
+        <div layout="row" layout-align="end right">
+            <h2>{{terms.length}} Terms</h2>
+        </div>
+        <div layout="column" ng-repeat="term in terms">
+            <div layout="row" flex>
+                <h3 flex>{{term.title}}</h3>
+                <div>
+                    <a ui-sref="main.editTerm({id:term.secureId})"><ng-md-icon style="fill: #222;"  size="15" icon="edit"></ng-md-icon></a>
+                    <a ng-click="deleteTerm(term)" ><ng-md-icon style="fill: #222;" size="15" icon="delete"></ng-md-icon</a>
+                </div>
+            </div>
+            <ul ng-repeat="definition in term.definitions.data track by $index">
+                <li>
+                    {{definition.definition}}
+                </li>
+            </ul>
+
+        </div>
+
+    </md-content>
 </div>

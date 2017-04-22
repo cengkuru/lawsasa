@@ -8,7 +8,7 @@
         function getAll(onSuccess, onError){
             Restangular.all('terms').getList().then(function(response){
                 onSuccess(response);
-            }, function(){
+            }, function(response){
                 onError(response);
 
             });
