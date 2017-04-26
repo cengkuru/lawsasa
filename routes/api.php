@@ -43,5 +43,15 @@ $api->version('v1', function ($api) {
 
     });
 
+    // lawareas
+    $api->group(['prefix' => 'lawareas'], function ($api) {
+        $api->get('/', 'App\Http\Controllers\LawareasController@index');
+        $api->get('/{id}', 'App\Http\Controllers\LawareasController@show');
+        $api->post('/', 'App\Http\Controllers\LawareasController@store');
+        $api->put('/{id}', 'App\Http\Controllers\LawareasController@update');
+        $api->delete('/{id}', 'App\Http\Controllers\LawareasController@destroy');
+
+    });
+
 
 });

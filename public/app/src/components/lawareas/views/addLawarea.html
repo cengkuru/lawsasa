@@ -1,0 +1,41 @@
+<md-content layout-padding >
+    <form name="lawareaForm">
+        <md-input-container class="md-block">
+            <label>Law Area</label>
+
+            <input required name="lawarea" ng-model="lawarea.title">
+            <div ng-messages="lawareaForm.text.$error">
+                <div ng-message="required">This is required.</div>
+            </div>
+            <div ng-if="errors.title">
+                <div class="error">{{errors.title[0]}}</div>
+            </div>
+        </md-input-container>
+
+
+        <md-input-container class="md-block" >
+            <div layout="row" flex>
+                <div flex>
+                    <label>Description</label>
+                    <input required md-no-asterisk name="description" ng-model="lawarea.description">
+                    <div ng-messages="lawareaForm.description.$error">
+                        <div ng-message="required">This is required.</div>
+
+                    </div>
+                </div>
+
+            </div>
+        </md-input-container>
+
+        <div ng-if="errors.description">
+            <div class="error">{{errors.description[0]}}</div>
+        </div>
+
+
+        <div>
+            <md-button ng-disabled="lawareaForm.$invalid" ng-click="submit()" type="submit">Submit</md-button>
+            <md-button  ui-sref="main.lawareas">Cancel</md-button>
+        </div>
+
+    </form>
+</md-content>

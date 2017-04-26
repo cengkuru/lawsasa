@@ -17,10 +17,11 @@ angular.module('gpp',
         'loginModule',
         'usersModule',
         'termModule',
-
+        'lawareaModule',
 
         'app.userService',
-        'app.termService'
+        'app.termService',
+        'app.lawareaService'
 
     ])
 // Constants
@@ -169,6 +170,39 @@ angular.module('gpp',
                 hasHeader:true,
                 hasSidebar:true,
                 controller: 'termsCtrl'
+            })
+
+            // Term
+            .state({
+                name: 'main.lawareas',
+                title: 'Manage lawareas',
+                url: '/manage/lawareas',
+                templateUrl: 'app/src/components/lawareas/views/manageLawareas.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'lawareasCtrl'
+            })
+
+            // New Lawarea
+            .state({
+                name: 'main.newLawarea',
+                title: 'New Lawarea',
+                url: '/manage/lawareas/add-lawarea',
+                templateUrl: 'app/src/components/lawareas/views/addLawarea.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'lawareasCtrl'
+            })
+
+            // Edit Lawarea
+            .state({
+                name: 'main.editLawarea',
+                title: 'Edit Lawarea',
+                url: '/manage/lawarea/:id/edit',
+                templateUrl: 'app/src/components/lawareas/views/addLawarea.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'lawareasCtrl'
             })
 
 

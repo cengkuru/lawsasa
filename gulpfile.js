@@ -135,10 +135,12 @@ gulp.task('scripts', function() {
             bases.app + 'components/users/controllers/usersCtrl.js',
             bases.app + 'components/dashboard/controllers/dashboardCtrl.js',
             bases.app + 'components/terms/controllers/termsCtrl.js',
+            bases.app + 'components/lawareas/controllers/lawareasCtrl.js',
 
 
             bases.app + 'components/users/services/userService.js',
-            bases.app + 'components/home/services/termService.js'
+            bases.app + 'components/home/services/termService.js',
+            bases.app + 'components/lawareas/services/lawareaService.js'
         ])
         .pipe(concat('script.js'))
         .pipe(gulp.dest(bases.build + 'js/'))

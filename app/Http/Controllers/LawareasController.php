@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Lawarea;
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use Dingo\Api\Routing\Helpers;
+use App\Transformers\LawareaTransformer;
+use Illuminate\Support\Facades\Crypt;
 
 class LawareasController extends Controller
 {
+    use Helpers;
     /**
      * Display a listing of the resource.
      *
@@ -13,18 +19,12 @@ class LawareasController extends Controller
      */
     public function index()
     {
-        //
+        $lawareas = Lawarea::all();
+
+        return $this->collection($lawareas, new LawareaTransformer);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -32,9 +32,15 @@ class LawareasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\StoreLawareaRequest $request)
     {
-        //
+        $lawarea = Lawarea::create($request->all());
+
+        if ($lawarea) {
+            return $this->response->created(); // 201 response
+        }
+
+        return $this->response->errorBadRequest();
     }
 
     /**
@@ -45,19 +51,19 @@ class LawareasController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $lawarea = Lawarea::where('id',Crypt::decrypt($id))->first();
+
+
+        if ($lawarea) {
+
+            return $this->item($lawarea, new LawareaTransformer);
+        }
+
+        return $this->response->errorNotFound();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -66,9 +72,18 @@ class LawareasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id,Requests\StoreLawareaRequest $request)
     {
-        //
+        $lawarea = Lawarea::findOrFail(Crypt::decrypt($id));
+
+        $lawarea->update($request->all());
+        if ($lawarea) {
+
+
+            return $this->response->noContent();
+        }
+
+        return $this->response->errorBadRequest();
     }
 
     /**
@@ -79,6 +94,15 @@ class LawareasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lawarea = Lawarea::findOrFail(Crypt::decrypt($id));
+
+        if ($lawarea) {
+
+            return $this->response->noContent();
+        }
+
+        return $this->response->errorBadRequest();
     }
+
+
 }

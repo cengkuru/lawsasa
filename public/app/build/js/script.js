@@ -17,10 +17,11 @@ angular.module('gpp',
         'loginModule',
         'usersModule',
         'termModule',
-
+        'lawareaModule',
 
         'app.userService',
-        'app.termService'
+        'app.termService',
+        'app.lawareaService'
 
     ])
 // Constants
@@ -169,6 +170,39 @@ angular.module('gpp',
                 hasHeader:true,
                 hasSidebar:true,
                 controller: 'termsCtrl'
+            })
+
+            // Term
+            .state({
+                name: 'main.lawareas',
+                title: 'Manage lawareas',
+                url: '/manage/lawareas',
+                templateUrl: 'app/src/components/lawareas/views/manageLawareas.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'lawareasCtrl'
+            })
+
+            // New Lawarea
+            .state({
+                name: 'main.newLawarea',
+                title: 'New Lawarea',
+                url: '/manage/lawareas/add-lawarea',
+                templateUrl: 'app/src/components/lawareas/views/addLawarea.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'lawareasCtrl'
+            })
+
+            // Edit Lawarea
+            .state({
+                name: 'main.editLawarea',
+                title: 'Edit Lawarea',
+                url: '/manage/lawarea/:id/edit',
+                templateUrl: 'app/src/components/lawareas/views/addLawarea.html',
+                hasHeader:true,
+                hasSidebar:true,
+                controller: 'lawareasCtrl'
             })
 
 
@@ -439,7 +473,99 @@ angular.module('usersModule',[])
                 $scope.terms.splice(index, 1);
             }
             
+        };
+
+    }
+})();
+
+(function () {
+    angular
+        .module('lawareaModule',[])
+        .controller('lawareasCtrl',lawareasCtrl);
+    function lawareasCtrl($scope,lawareaService,$mdToast,$rootScope,$stateParams) {
+        // New lawarea object
+        $scope.lawarea = {};
+
+        // When editing
+        switch ($rootScope.currentState){
+            case 'main.editLawarea':
+
+                lawareaService.getById($stateParams.id,function (response) {
+                    $scope.lawarea = response.data;
+
+                    // console.log($scope.lawarea);
+
+                });
+                break;
         }
+        // Get all current lawareas
+        lawareaService.getAll(function (response) {
+            // On success
+            $scope.lawareas = response;
+        },function (error) {
+            // On error
+            console.log(error);
+        });
+
+
+        // Add lawarea / edit
+        $scope.submit = function () {
+
+            switch ($rootScope.currentState){
+                case 'main.newLawarea':
+                    lawareaService.create($scope.lawarea,function () {
+
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent($scope.lawarea.title +' successfully added')
+                                .position('bottom right' )
+                                .hideDelay(3000)
+                        );
+
+                        $scope.lawarea = {};
+
+                    },function (errors) {
+                        $scope.errors = errors.data.errors;
+                    });
+                    break;
+                case 'main.editLawarea':
+                    lawareaService.update($stateParams.id,$scope.lawarea,function () {
+
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent($scope.lawarea.title +' successfully Updated')
+                                .position('bottom right' )
+                                .hideDelay(3000)
+                        );
+
+                    },function (errors) {
+                        $scope.errors = errors.data.errors;
+                    });
+                    break;
+
+            }
+
+        };
+        
+        // Delete lawarea
+        $scope.deleteLawarea = function (lawarea) {
+
+            console.log(lawarea);
+            lawareaService.remove(lawarea.secureId,function (response) {
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent($scope.lawarea.title +' successfully deleted')
+                        .position('bottom right' )
+                        .hideDelay(3000)
+                );
+            });
+
+            var index = $scope.lawareas.indexOf(lawarea);
+            if (index > -1) {
+                $scope.lawareas.splice(index, 1);
+            }
+            
+        };
 
     }
 })();
@@ -669,6 +795,102 @@ angular.module('app.userService', [])
 
         function searchForTerm(term, onSuccess, onError){
             Restangular.oneUrl('terms/search/'+term).get().then(function(response){
+
+                onSuccess(response);
+
+            }, function(response){
+
+                onError(response);
+            });
+        }
+
+        Restangular.setDefaultRequestParams({token: userService.getCurrentToken()});
+
+
+        return {
+            getAll: getAll,
+            getById: getById,
+            searchForTerm: searchForTerm,
+            create: create,
+            update: update,
+            remove: remove
+        };
+    }
+})();
+
+(function () {
+    angular
+        .module('app.lawareaService', [])
+        .factory('lawareaService', lawareaService);
+
+    function lawareaService(Restangular,userService) {
+
+        function getAll(onSuccess, onError){
+            Restangular.all('lawareas').getList().then(function(response){
+                onSuccess(response);
+            }, function(response){
+                onError(response);
+
+            });
+        }
+
+        function getById(lawareaId, onSuccess, onError){
+
+            Restangular.one('lawareas', lawareaId).get().then(function(response){
+
+                onSuccess(response);
+
+            }, function(response){
+
+                onError(response);
+
+            });
+
+        }
+
+        function create(data, onSuccess, onError){
+
+            Restangular.all('lawareas').post(data).then(function(response){
+
+                onSuccess(response);
+
+            }, function(response){
+
+                onError(response);
+
+            });
+
+        }
+
+        function update(lawareaId, data, onSuccess, onError){
+
+            Restangular.one("lawareas").customPUT(data, lawareaId).then(function(response) {
+
+                    onSuccess(response);
+
+                }, function(response){
+
+                    onError(response);
+
+                }
+            );
+
+        }
+
+        function remove(lawareaId, onSuccess, onError){
+            Restangular.one('lawareas/', lawareaId).remove().then(function(){
+
+                onSuccess();
+
+            }, function(response){
+
+                onError(response);
+
+            });
+        }
+
+        function searchForTerm(lawarea, onSuccess, onError){
+            Restangular.oneUrl('lawareas/search/'+lawarea).get().then(function(response){
 
                 onSuccess(response);
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Transformers;
-
+use Illuminate\Support\Facades\Crypt;
 use League\Fractal\TransformerAbstract;
 use App\Lawarea;
 
@@ -11,7 +11,8 @@ class LawareaTransformer extends TransformerAbstract
     {
         return [
             'id'            => (int) $lawarea->id,
-            'name'          => $lawarea->title,
+            'secureId'=>Crypt::encrypt($lawarea->id),
+            'title'          => $lawarea->title,
             'description'          => $lawarea->description
         ];
     }

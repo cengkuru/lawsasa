@@ -120,7 +120,7 @@
                 $scope.terms.splice(index, 1);
             }
             
-        }
+        };
 
     }
 })();
