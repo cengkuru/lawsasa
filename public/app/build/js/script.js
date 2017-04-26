@@ -184,6 +184,7 @@ angular.module('gpp',
     }]);
 
 (function () {
+
     angular
         .module('mainModule', [])
         .controller('mainCtrl', mainCtrl);

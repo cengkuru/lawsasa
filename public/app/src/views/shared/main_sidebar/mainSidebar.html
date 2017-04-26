@@ -1,14 +1,14 @@
 <md-sidenav
         md-disable-backdrop
-        class="md-sidenav-left"
+        class="md-sidenav-left secondary-bg"
         md-component-id="left"
         md-is-locked-open="lockedLeft"
         >
 
-    <md-toolbar style="background: #fff" class="font-black  white-bg">
-        <h3 class="md-toolbar-tools">Lawsasa</h3>
+    <md-toolbar  class=" gray-bg">
+        <h3 class="md-toolbar-tools  secondary-bg">Lawsasa</h3>
     </md-toolbar>
-    <md-content layout-padding >
+    <md-content layout-padding class="gray-bg" >
         <md-list>
             <md-list-item ng-repeat="item in menu">
                 <a ui-sref="{{::item.link}}" ui-sref-active="active">

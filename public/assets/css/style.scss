@@ -1,11 +1,22 @@
 /*Color variables*/
-$black: #222;
-$white: #fff;
+$black: #000000;
+$white: #ffffff;
 $gray:#666;
 $red: #FF0000;
 
+$primary-background-color:#f44336;
+$primary-background-dark-color:#ba000d;
+$primary-background-light-color:#ff7961;
+
+$secondary-background-color:#212121;
+$secondary-background-light-color:#484848;
+$secondary-background-dark-color:#000000;
+
+$secondary-text-color:#ffffff;
+$primary-text-color:#000000;
+
+
 body {
-  background: $white;
   color: $black;
   overflow-y: auto;
   height: auto;
@@ -15,6 +26,38 @@ body {
   margin: 0 !important;
   padding:0 !important;
 }
+.primary-bg {
+  background: $primary-background-color !important;
+  color: $primary-text-color !important;
+}
+.primary-bg-dark {
+  background: $primary-background-dark-color !important;
+  color: $secondary-text-color !important;
+
+}
+.primary-bg-light {
+  background: $primary-background-light-color !important;
+  color: $primary-text-color !important;
+}
+
+.secondary-bg {
+  background: $secondary-background-color !important;
+  color: $secondary-text-color !important;
+
+  a,h1,h2,h3,h4,h5,h6 {
+    color: $secondary-text-color !important;
+  }
+}
+.secondary-bg-dark {
+  background: $secondary-background-dark-color !important;
+  color: $secondary-text-color !important;
+
+}
+.secondary-bg-light {
+  background: $secondary-background-light-color !important;
+  color: $secondary-text-color !important;
+}
+
  a {
    color: $gray;
    text-decoration: none !important;
@@ -24,8 +67,13 @@ body {
    text-decoration: underline;
  }
 
-
 //Utility classes
+.margin-top{
+  margin-top: 10px;
+}
+.margin-top-two{
+  margin-top: 20px;
+}
 .margin-top-none{
    margin-top: 0;
  }
@@ -64,6 +112,15 @@ md-sidenav.md-closed.md-locked-open-add-active {
 .white-bg {
   background: #fff !important;
 }
+
+.gray-bg {
+  background: #F5F5F6 !important;
+  color: $primary-text-color;
+
+  a {
+    color: $primary-text-color !important;
+  }
+}
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
   background: $white !important;
 }
@@ -95,3 +152,19 @@ md-sidenav.md-closed.md-locked-open-add-active {
 .error {
   color:$red;
 }
+.md-button.md-primary.md-raised {
+  background-color: $primary-background-color !important;
+}
+.mg-input-focused {
+  border-color: $primary-background-color !important;
+}
+
+
+.term-list-item {
+  border-bottom: 1px solid #F5F5F6;
+  margin: 10px 0 10px 0;
+}
+.pagination-area {
+  margin: 20px 0 20px 0;
+}
+
