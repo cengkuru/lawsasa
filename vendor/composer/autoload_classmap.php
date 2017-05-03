@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddCountryIdToTermsTable' => $baseDir . '/database/migrations/2017_04_21_094414_add_country_id_to_terms_table.php',
     'AddLinksToStatutesTable' => $baseDir . '/database/migrations/2017_04_14_123130_add_links_to_statutes_table.php',
+    'CountriesTableSeeder' => $baseDir . '/database/seeds/CountriesTableSeeder.php',
     'CreateBlogTermPivotTable' => $baseDir . '/database/migrations/2017_04_14_132008_create_blog_term_pivot_table.php',
     'CreateBlogsTable' => $baseDir . '/database/migrations/2017_04_14_131951_create_blogs_table.php',
     'CreateBookTermPivotTable' => $baseDir . '/database/migrations/2017_04_14_131818_create_book_term_pivot_table.php',
@@ -25,6 +26,8 @@ return array(
     'CreateLawareaTermPivotTable' => $baseDir . '/database/migrations/2017_04_14_153024_create_lawarea_term_pivot_table.php',
     'CreateLawareasTable' => $baseDir . '/database/migrations/2017_04_14_121714_create_lawareas_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateRoleUserPivotTable' => $baseDir . '/database/migrations/2015_11_29_180104_create_role_user_pivot_table.php',
+    'CreateRolesTable' => $baseDir . '/database/migrations/2015_11_29_180103_create_roles_table.php',
     'CreateStatutechaptersTable' => $baseDir . '/database/migrations/2017_04_14_122023_create_statutechapters_table.php',
     'CreateStatutechaptersectionsTable' => $baseDir . '/database/migrations/2017_04_14_122304_create_statutechaptersections_table.php',
     'CreateStatutesTable' => $baseDir . '/database/migrations/2017_04_14_121914_create_statutes_table.php',
@@ -484,6 +487,7 @@ return array(
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'RemoveCountryIdFromTermsTable' => $baseDir . '/database/migrations/2017_04_21_093734_remove_country_id_from_terms_table.php',
     'RemoveDescriptionFromTermsTable' => $baseDir . '/database/migrations/2017_04_21_135920_remove_description_from_terms_table.php',
+    'RolesTableSeeder' => $baseDir . '/database/seeds/RolesTableSeeder.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',
     'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
     'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => $vendorDir . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -564,4 +568,5 @@ return array(
     'SebastianBergmann\\ResourceOperations\\ResourceOperations' => $vendorDir . '/sebastian/resource-operations/src/ResourceOperations.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
 );

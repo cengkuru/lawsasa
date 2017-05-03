@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
+   $api->post('authenticate', 'App\Http\Controllers\AuthenticateController@authenticate');
 
 
     // Countries

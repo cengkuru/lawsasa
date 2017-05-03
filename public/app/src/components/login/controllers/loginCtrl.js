@@ -13,7 +13,9 @@
                 $scope.loginData.email, $scope.loginData.password,
                 function(response) {
                     $rootScope.isAuthenticated = true;
-                    $state.go('main.home');
+                    $state.go('main.dashboard');
+                },function (error) {
+                  $scope.error = error.data;
                 }
             );
         };

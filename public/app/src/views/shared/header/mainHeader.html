@@ -10,7 +10,14 @@
 
       <span flex></span>
         <div flex="10" layout="row" layout-align="end start">
-            <md-button flex layout="row" class="md-icon-button" aria-label="Sign in" ui-sref="main.login">
+            <md-button ng-click="logout()" ng-if="isAuthenticated" flex layout="row" class="md-icon-button" aria-label="Sign in" ui-sref="main.login">
+              <span>
+                  Sign out
+              </span>
+
+                <ng-md-icon icon="logout"></ng-md-icon>
+            </md-button>
+            <md-button ng-if="!isAuthenticated" flex layout="row" class="md-icon-button" aria-label="Sign in" ui-sref="main.login">
                 <span>
                     Sign in
                 </span>

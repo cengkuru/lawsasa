@@ -1,11 +1,13 @@
 (function () {
+  mainCtrl.$inject = ['$scope','$state','$rootScope','$mdSidenav','$mdComponentRegistry','userService'];
+
 
     angular
         .module('mainModule', [])
         .controller('mainCtrl', mainCtrl);
 
     // mainCtrl.js
-    function mainCtrl ($scope,$state, $rootScope, $mdSidenav,$mdComponentRegistry ) {
+    function mainCtrl ($scope,$state, $rootScope, $mdSidenav,$mdComponentRegistry,userService ) {
         $scope.lockedLeft = true;
 
         $scope.toggleLeft = function() {
@@ -15,8 +17,8 @@
 
 
         $scope.logout = function () {
-            // userService.logout();
-            // $rootScope.isAuthenticated=null;
+            userService.logout();
+            $rootScope.isAuthenticated=null;
             $state.go('main.login');
         };
         $scope.refresh = function () {

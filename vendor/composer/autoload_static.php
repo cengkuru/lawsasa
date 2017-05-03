@@ -464,6 +464,7 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
     public static $classMap = array (
         'AddCountryIdToTermsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_094414_add_country_id_to_terms_table.php',
         'AddLinksToStatutesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_123130_add_links_to_statutes_table.php',
+        'CountriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CountriesTableSeeder.php',
         'CreateBlogTermPivotTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_132008_create_blog_term_pivot_table.php',
         'CreateBlogsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_131951_create_blogs_table.php',
         'CreateBookTermPivotTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_131818_create_book_term_pivot_table.php',
@@ -481,6 +482,8 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         'CreateLawareaTermPivotTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_153024_create_lawarea_term_pivot_table.php',
         'CreateLawareasTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_121714_create_lawareas_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateRoleUserPivotTable' => __DIR__ . '/../..' . '/database/migrations/2015_11_29_180104_create_role_user_pivot_table.php',
+        'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2015_11_29_180103_create_roles_table.php',
         'CreateStatutechaptersTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_122023_create_statutechapters_table.php',
         'CreateStatutechaptersectionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_122304_create_statutechaptersections_table.php',
         'CreateStatutesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_14_121914_create_statutes_table.php',
@@ -940,6 +943,7 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'RemoveCountryIdFromTermsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_093734_remove_country_id_from_terms_table.php',
         'RemoveDescriptionFromTermsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_135920_remove_description_from_terms_table.php',
+        'RolesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RolesTableSeeder.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -1020,6 +1024,7 @@ class ComposerStaticInita54bc1968666dccf16a5da30b0a3accc
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
