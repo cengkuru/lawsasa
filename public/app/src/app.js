@@ -30,10 +30,11 @@ angular.module('gpp',
     })
 
     // loading defaults
-    .run(['$rootScope', '$state', '$location', '$stateParams',  function ($rootScope, $state, $location, $stateParams) {
+    .run(['$rootScope', '$state', '$location', '$stateParams','userService',  function ($rootScope, $state, $location, $stateParams,userService) {
 
         $rootScope.previousState = '';
         $rootScope.currentState = '';
+         $rootScope.isAuthenticated = userService.checkIfLoggedIn();
 
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
@@ -43,6 +44,7 @@ angular.module('gpp',
             $rootScope.returnToStateParams = fromParams.id;
             $rootScope.hasHeader = to.hasHeader;
             $rootScope.hasSidebar = to.hasSidebar;
+            $rootScope.hasFooter = to.hasFooter;
             $rootScope.title = to.title;
             console.log('current state: ' + $rootScope.currentState);
 
@@ -116,6 +118,7 @@ angular.module('gpp',
                 templateUrl: 'app/src/components/home/views/home.html',
                 hasHeader:true,
                 hasSidebar:false,
+                hasFooter:true,
                 controller: 'homeCtrl'
             })
             // Dashboard
@@ -125,9 +128,11 @@ angular.module('gpp',
                 url: '/dashboard',
                 templateUrl: 'app/src/components/dashboard/views/dashboard.html',
                 hasHeader:true,
+                hasFooter:true,
                 hasSidebar:true,
                 controller: 'dashboardCtrl'
             })
+
             // Login
             .state({
                 name: 'main.login',
@@ -135,6 +140,7 @@ angular.module('gpp',
                 url: '/login',
                 templateUrl: 'app/src/components/login/views/login.html',
                 hasHeader:false,
+                hasFooter:false,
                 hasSidebar:false,
                 controller: 'loginCtrl'
             })
@@ -146,6 +152,7 @@ angular.module('gpp',
                 url: '/manage/terms',
                 templateUrl: 'app/src/components/terms/views/manageTerms.html',
                 hasHeader:true,
+                hasFooter:true,
                 hasSidebar:true,
                 controller: 'termsCtrl'
             })
@@ -157,6 +164,7 @@ angular.module('gpp',
                 url: '/manage/terms/add-new',
                 templateUrl: 'app/src/components/terms/views/addTerm.html',
                 hasHeader:true,
+                hasFooter:true,
                 hasSidebar:true,
                 controller: 'termsCtrl'
             })
@@ -168,6 +176,7 @@ angular.module('gpp',
                 url: '/manage/term/:id/edit',
                 templateUrl: 'app/src/components/terms/views/addTerm.html',
                 hasHeader:true,
+                hasFooter:true,
                 hasSidebar:true,
                 controller: 'termsCtrl'
             })
@@ -179,6 +188,7 @@ angular.module('gpp',
                 url: '/manage/lawareas',
                 templateUrl: 'app/src/components/lawareas/views/manageLawareas.html',
                 hasHeader:true,
+                hasFooter:true,
                 hasSidebar:true,
                 controller: 'lawareasCtrl'
             })
@@ -190,6 +200,7 @@ angular.module('gpp',
                 url: '/manage/lawareas/add-lawarea',
                 templateUrl: 'app/src/components/lawareas/views/addLawarea.html',
                 hasHeader:true,
+                hasFooter:true,
                 hasSidebar:true,
                 controller: 'lawareasCtrl'
             })
@@ -201,6 +212,7 @@ angular.module('gpp',
                 url: '/manage/lawarea/:id/edit',
                 templateUrl: 'app/src/components/lawareas/views/addLawarea.html',
                 hasHeader:true,
+                hasFooter:true,
                 hasSidebar:true,
                 controller: 'lawareasCtrl'
             })

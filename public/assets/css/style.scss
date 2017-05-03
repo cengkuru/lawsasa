@@ -4,16 +4,21 @@ $white: #ffffff;
 $gray:#666;
 $red: #FF0000;
 
-$primary-background-color:#f44336;
-$primary-background-dark-color:#ba000d;
-$primary-background-light-color:#ff7961;
 
-$secondary-background-color:#212121;
-$secondary-background-light-color:#484848;
-$secondary-background-dark-color:#000000;
 
-$secondary-text-color:#ffffff;
-$primary-text-color:#000000;
+/*Color scheme*/
+$primary-color: #f44336;
+$primary-color-light: #ff7961;
+$primary-color-dark: #ba000d;
+
+$secondary-color: #212121;
+$secondary-color-light: #484848;
+$secondary-color-dark: #000000;
+
+// Text color scheme
+$primary-text-color: #000000;
+$secondary-text-color: #ffffff;
+
 
 
 body {
@@ -26,37 +31,36 @@ body {
   margin: 0 !important;
   padding:0 !important;
 }
+
 .primary-bg {
-  background: $primary-background-color !important;
+  background: $primary-color !important;
   color: $primary-text-color !important;
 }
-.primary-bg-dark {
-  background: $primary-background-dark-color !important;
-  color: $secondary-text-color !important;
 
+.primary-bg-dark {
+  background: $primary-color-dark !important;
+  color: $primary-text-color !important;
 }
+
 .primary-bg-light {
-  background: $primary-background-light-color !important;
+  background: $primary-color-light !important;
   color: $primary-text-color !important;
 }
 
 .secondary-bg {
-  background: $secondary-background-color !important;
+  background: $secondary-color !important;
   color: $secondary-text-color !important;
 
-  a,h1,h2,h3,h4,h5,h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $secondary-text-color !important;
   }
 }
-.secondary-bg-dark {
-  background: $secondary-background-dark-color !important;
-  color: $secondary-text-color !important;
 
-}
-.secondary-bg-light {
-  background: $secondary-background-light-color !important;
-  color: $secondary-text-color !important;
-}
 
  a {
    color: $gray;
@@ -84,14 +88,18 @@ body {
 .full-width {
   width: 100% !important;
 }
+
 .user_avatar {
-  img {
+
     width: 64px;
     height: 64px;
     display: inline-block;
     text-align: center;
     border-radius: 50%;
-  }
+    background-image: url(../../assets/img/user.png);
+    background-repeat: no-repeat;
+    background-color: rgba(0,0,0,.085);
+    background-position: 50% 1px;
 }
 .border-bottom-light {
   border-bottom: 1px solid rgba(0,0,0,.12) !important;
@@ -153,10 +161,11 @@ md-sidenav.md-closed.md-locked-open-add-active {
   color:$red;
 }
 .md-button.md-primary.md-raised {
-  background-color: $primary-background-color !important;
+  background-color: $primary-color !important;
 }
+
 .mg-input-focused {
-  border-color: $primary-background-color !important;
+  border-color: $primary-color !important;
 }
 
 .list-item {
@@ -167,3 +176,177 @@ md-sidenav.md-closed.md-locked-open-add-active {
   margin: 20px 0 20px 0;
 }
 
+
+.md-sidenav-left {
+  width: 100%;
+  min-width: 254px;
+  max-width: 100%;
+}
+
+.md-button.md-primary.md-raised {
+  background-color: $primary-color-dark !important;
+}
+
+.margin-top-none {
+  margin-top: 0;
+}
+
+.margin-bottom-none {
+  margin-bottom: 0;
+}
+
+.full-width {
+  width: 100% !important;
+}
+.user_heading_avatar {
+    float: left;
+    margin-right: 24px;
+    position: relative;
+}
+
+.user_heading_avatar img {
+    -webkit-transition: all 280ms cubic-bezier(.4,0,.2,1);
+    transition: all 280ms cubic-bezier(.4,0,.2,1);
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    display: inline-block;
+    background-color: #ededed;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    vertical-align: top;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    border: 0;
+    vertical-align: middle;
+}
+.sub-heading {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    display: block;
+}
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: $primary-color-light;
+    background: $primary-color-light;
+}
+
+.md-button.md-fab.md-mini {
+    line-height: 52px;
+}
+.md-fab.md-fab-accent {
+    background: #7cb342;
+}
+.md-fab.md-fab-accent:hover {
+    background: #7cb342 !important;
+}
+.padding-right {
+  padding-right: 10px;
+}
+.padding-none {
+  padding: 0 !important;
+}
+
+.md-list, .md-list>li {
+    list-style: none;
+    padding: 0;
+}
+.md-list {
+    margin: 0;
+}
+
+.md-list, .md-list>li {
+    min-height: 48px;
+    padding: 8px 4px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    position: relative;
+}
+.md-list .md-list-content, .md-list>li>.md-list-content {
+    overflow: hidden;
+}
+.md-list, .md-list *, .md-list :after, .md-list :before, .md-list:after, .md-list:before {
+    box-sizing: border-box;
+}
+
+.md-list .md-list-content .md-list-heading, .md-list>li>.md-list-content .md-list-heading {
+    margin: 0;
+    font-weight: 500;
+    display: block;
+    overflow: hidden;
+    padding-bottom: 1px;
+}
+
+.text-small {
+    font-size: 12px!important;
+}
+
+.text-muted {
+    color: #757575!important;
+}
+
+.md-list, .md-list>li:last-child {
+    border-bottom: none;
+}
+
+.md-list-addon>li {
+    margin-left: 64px;
+    position: relative;
+}
+.md-list-addon>li:first-child .md-list-addon-element {
+    top: 0;
+}
+.md-list-addon-element {
+    position: absolute;
+    left: -64px;
+    top: -1px;
+    bottom: -1px;
+    width: 64px;
+    text-align: center;
+    padding: 8px 0;
+    display: block;
+}
+
+.text-warning {
+    color: #ffa000!important;
+}
+.text-success {
+    color: #7cb342!important;
+}
+.text-danger {
+    color: #e53935!important;
+}
+
+// Style login page
+.login-page {
+  font-size: 15px;
+    padding: 64px 24px;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100%;
+}
+.login_page_wrapper {
+    width: 360px;
+    max-width: 100%;
+    margin: 0 auto;
+    -webkit-transition: all 280ms cubic-bezier(.4,0,.2,1);
+    transition: all 280ms cubic-bezier(.4,0,.2,1);
+}
+
+md-card {
+    background: #fff;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+    border: none;
+}
+
+.login_heading {
+    text-align: center;
+    margin-bottom: 32px;
+}

@@ -1,0 +1,48 @@
+<!-- TODO: Add constitutionals module -->
+<div layout-padding>
+
+
+    <md-content >
+        <div layout="row" flex>
+
+            <span flex></span>
+            <span>
+                <md-button  layout="row" ui-sref="main.newLawarea">
+
+            Create
+
+        </md-button>
+            </span>
+        </div>
+        <div flex layout="row">
+            <div flex="20">
+                <h3>Title</h3>
+            </div>
+            <div flex>
+                <h4>Description</h4>
+            </div>
+
+            <div flex="10">
+
+            </div>
+        </div>
+        <div flex layout="row" class="list-item" ng-repeat="lawarea in lawareas">
+            <div layout="row" flex="20">
+                <b flex>{{lawarea.title}}</b>
+            </div>
+            <div flex layout="column" >
+                {{lawarea.description}}
+            </div>
+            <div flex="10">
+                <a ui-sref="main.editLawarea({id:lawarea.secureId})"><ng-md-icon style="fill: #222;"  size="15" icon="edit"></ng-md-icon></a>
+                <a ng-click="deleteLawarea(lawarea)" ><ng-md-icon style="fill: #222;" size="15" icon="delete"></ng-md-icon</a>
+            </div>
+        </div>
+        <div flex class="pagination-area">
+            <div>
+                Total: {{lawareas.length}}
+            </div>
+        </div>
+
+    </md-content>
+</div>

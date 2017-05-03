@@ -21,85 +21,58 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     notify = require('gulp-notify');
 
-var bases = {
-    app: 'public/app/src/',
-    build: 'public/app/build/',
-    assets: 'public/assets/',
-    index: 'resources/views/',
-    bower: 'public/components/'
-};
 
-var paths = {
-    scripts: ['components/**/**/*.js'],
-    styles: ['css/**/*.css'],
-    sass: ['css/**/*.scss'],
-    html: ['views/*.html'],
-    partials: ['views/partials/*.html'],
-    php: ['src/*.php'],
-    images: ['images/**/*'],
-    views: ['views/**/*'],
-    extras: ['robots.txt', 'favicon.ico'],
-};
+    var bases = {
+      app: 'public/app/src/',
+      build: 'public/app/build/',
+      assets: 'public/assets/',
+      index: 'resources/views/',
+      bower: 'public/components/'
+    };
 
-// minify index
-gulp.task('indexpage', function() {
-    var htmlSrc = bases.index + paths.php,// 'resources/views/src/index.php
+    var paths = {
+      scripts: ['components/**/**/*.js'],
+      styles: ['css/**/*.css'],
+      sass: ['css/**/*.scss'],
+      html: ['views/*.html'],
+      partials: ['views/partials/*.html'],
+      php: ['src/*.php'],
+      images: ['images/**/*'],
+      views: ['views/**/*'],
+      extras: ['robots.txt', 'favicon.ico']
+    };
+
+    // minify index
+    gulp.task('indexpage', function() {
+      var htmlSrc = bases.index + paths.php,
         htmlDst = bases.index;
 
-    gulp.src(htmlSrc)
-        .pipe(changed(htmlDst))
-        .pipe(minifyHTML())
-        .pipe(gulp.dest(htmlDst))
-        .pipe(notify({ message: 'Index page  Task Completed' }))
-        .on('error', gutil.log);
-});
+      return gulp.src(htmlSrc).pipe(changed(htmlDst)).pipe(minifyHTML()).pipe(gulp.dest(htmlDst)).pipe(notify({message: 'Index page  Task Completed'})).on('error', gutil.log);
+    });
 
-// Convert sass to css
-gulp.task('sass', function() {
-    return gulp
-        .src(bases.assets + paths.sass)
-        .pipe(sass().on('error', sass.logError))
-        .pipe(size({ gzip: true, showFiles: true }))
-        .pipe(gulp.dest(bases.assets + 'css/'))
-        .pipe(reload({ stream: true }))
-        .pipe(notify({ message: 'sass to css  Task Completed' }))
-        .on('error', gutil.log);
-});
+    // Convert sass to css
+    gulp.task('sass', function() {
+      return gulp.src(bases.assets + paths.sass).pipe(sass().on('error', sass.logError)).pipe(size({gzip: true, showFiles: true})).pipe(gulp.dest(bases.assets + 'css/')).pipe(reload({stream: true})).pipe(notify({message: 'sass to css  Task Completed'})).on('error', gutil.log);
+    });
 
-// CSS concat, auto-prefix and minify
-gulp.task('styles', function() {
-    gulp.src([bases.assets + 'css/style.css'])
-        .pipe(concat('style.css'))
-        .pipe(prefix('last 2 versions'))
-        .pipe(cssmin())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest(bases.assets + 'css/'))
-        .pipe(notify({ message: 'styles minification  Task Completed' }))
-        .on('error', gutil.log);
-});
+    // CSS concat, auto-prefix and minify
+    gulp.task('styles', ['sass'], function() {
+      return gulp.src([bases.assets + 'css/style.css']).pipe(concat('style.css')).pipe(prefix('last 2 versions')).pipe(cssmin()).pipe(rename({suffix: '.min'})).pipe(gulp.dest(bases.assets + 'css/')).pipe(notify({message: 'styles minification  Task Completed'})).on('error', gutil.log);
+    });
 
-// Vendor CSS concat, auto-prefix and minify
-gulp.task('vendorstyles', function() {
-    gulp.src([
-            bases.bower + 'angular-loading-bar/build/loading-bar.css',
-            bases.bower + 'angular-material/angular-material.min.css',
-            bases.bower + 'angular-toastr/dist/angular-toastr.min.css',
-            bases.bower + 'angular-material-data-table/dist/md-data-table.min.css',
-            bases.bower + 'angular-material-icon/angular-material-icon.css'
+    // Vendor CSS concat, auto-prefix and minify
+    gulp.task('vendorstyles', function() {
+      return gulp.src([
+        bases.bower + 'angular-loading-bar/build/loading-bar.css',
+        bases.bower + 'angular-material/angular-material.min.css',
+        bases.bower + 'angucomplete-alt/angucomplete-alt.css',
+        bases.bower + 'angular-material-icon/angular-material-icon.css'
 
-        ])
-        .pipe(concat('vendors.css'))
-        .pipe(prefix('last 2 versions'))
-        .pipe(cssmin())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(notify({ message: 'vendorstyles  Task Completed' }))
-        .pipe(gulp.dest(bases.assets + 'css/'))
-        .on('error', gutil.log);
-
-});
+      ]).pipe(concat('vendors.css')).pipe(prefix('last 2 versions')).pipe(cssmin()).pipe(rename({suffix: '.min'})).pipe(notify({message: 'vendorstyles  Task Completed'})).pipe(gulp.dest(bases.assets + 'css/')).on('error', gutil.log);
+    });
 // Vendor concat, strip debugging and minify
 gulp.task('vendorjs', function() {
-    gulp.src([
+    return gulp.src([
             bases.bower + 'angular/angular.min.js',
             bases.bower + 'underscore/underscore-min.js',
             bases.bower + 'angular-ui-router/release/angular-ui-router.min.js',
@@ -126,7 +99,7 @@ gulp.task('vendorjs', function() {
 
 // JS concat, strip debugging and minify
 gulp.task('scripts', function() {
-    gulp.src([
+    return gulp.src([
             bases.app + 'app.js',
 
             bases.app + 'components/main/controllers/mainCtrl.js',
@@ -152,45 +125,45 @@ gulp.task('scripts', function() {
         .on('error', gutil.log);
 });
 
-gulp.task('masterJs', function() {
-    gulp.src([
-            bases.assets + 'js/vendors.min.js',
-            bases.build + 'js/script.min.js'
-        ])
-        .pipe(concat('masterjs.js'))
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest(bases.build + 'js/'))
-        .pipe(notify({ message: 'master.Js  Task Completed' }))
-        .on('error', gutil.log);
+
+gulp.task('masterJs', ['jshint'], function() {
+  return gulp.src([
+    bases.assets + 'js/vendors.min.js',
+    bases.build + 'js/script.min.js'
+  ]).pipe(concat('masterjs.js')).pipe(rename({suffix: '.min'})).pipe(gulp.dest(bases.build + 'js/')).pipe(notify({message: 'master.Js  Task Completed'})).on('error', gutil.log);
 });
 
-gulp.task('jshint', function() {
-    gulp.src(bases.app + paths.scripts)
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+gulp.task('jshint', ['scripts'], function() {
+  return gulp.src(bases.app + paths.scripts).pipe(jshint()).pipe(jshint.reporter('default'));
 });
-
 
 // Watch for changes
 gulp.task('watch', function() {
-    // watch for HTML changes
-    gulp.watch([bases.index + paths.php], ['indexpage']);
+  // watch for HTML changes
+  gulp.watch([bases.index + paths.php], ['indexpage']);
 
-    // watch for app.js changes
-    gulp.watch([bases.app + 'app.js'], ['scripts','jshint', 'masterJs']);
+  // watch sass for changes
+  gulp.watch([bases.assets + paths.sass], ['styles']);
 
-    // watch for JS changes
-    gulp.watch([bases.app + paths.scripts], ['scripts','jshint', 'masterJs']);
+  // watch for app.js changes
+  gulp.watch([bases.app + 'app.js'], ['masterJs']);
 
+  // watch for JS changes
+  gulp.watch([bases.app + paths.scripts], ['masterJs']);
 
-    // watch for component changes
-    gulp.watch([bases.bower], ['vendorjs']);
-
-    // watch sass for changes
-    gulp.watch([bases.assets + paths.sass], ['styles','sass']);
-
+  // watch for component changes
+  gulp.watch([bases.bower], ['vendorjs']);
 
 });
 
-
-gulp.task('default', ['indexpage', 'scripts', 'vendorjs','masterJs','jshint', 'watch']);
+gulp.task('default', [
+  'indexpage',
+  'sass',
+  'styles',
+  'vendorjs',
+  'scripts',
+  'jshint',
+  'masterJs',
+  'vendorstyles',
+  'watch'
+]);
